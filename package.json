@@ -1,0 +1,76 @@
+{
+  "name": "desktop-proctoring-application",
+  "version": "1.2.0",
+  "description": "Cross-platform desktop application for secure, AI-assisted candidate proctoring and assessment lockdown",
+  "homepage": "https://github.com/vrohan999/desktop_application#readme",
+  "bugs": {
+    "url": "https://github.com/vrohan999/desktop_application/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vrohan999/desktop_application.git"
+  },
+  "license": "MIT",
+  "author": "vrohan999 <rohanprathapreddy999@gmail.com>",
+  "type": "commonjs",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev:renderer\" \"npm run dev:electron\"",
+    "dev:renderer": "vite",
+    "dev:electron": "wait-on tcp:127.0.0.1:5173 && electron . --dev",
+    "start": "npm run dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "check": "npm run lint && npm run build",
+    "test": "npm run check",
+    "start:built": "npm run build && electron .",
+    "dist:mac": "npm run build && electron-builder --mac dmg"
+  },
+  "build": {
+    "appId": "com.vrohan999.sentinelproctor",
+    "productName": "SentinelProctor",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**",
+      "dist/**",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.education",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ],
+      "identity": "-",
+      "hardenedRuntime": false,
+      "extendInfo": {
+        "NSCameraUsageDescription": "SentinelProctor captures intermittent webcam frames during the assessment to ensure academic integrity."
+      }
+    },
+    "dmg": {
+      "title": "SentinelProctor ${version}"
+    }
+  },
+  "devDependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "@eslint/js": "^10.0.1",
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.6",
+    "electron": "^44.9.1",
+    "electron-builder": "^26.18.0",
+    "eslint": "^10.13.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.13.0",
+    "vite": "^8.3.4",
+    "wait-on": "^9.5.1"
+  }
+}
