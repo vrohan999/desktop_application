@@ -1,0 +1,139 @@
+/* =========================
+   Design tokens
+========================= */
+
+:root {
+  --bg: #f0f2f5;
+  --surface: #ffffff;
+  --surface-muted: #f7f8fa;
+  --border: #dde1e8;
+  --border-strong: #b8c0cc;
+
+  --text: #1a1d23;
+  --text-muted: #5a6170;
+  --text-faint: #8b93a0;
+
+  --ink: #2563a8;
+  --ink-hover: #1a4d8a;
+  --on-ink: #ffffff;
+  --ink-soft: #dbeafe;
+  --ink-line: #93c5fd;
+
+  --ok: #166534;
+  --ok-soft: #dcfce7;
+  --bad: #991b1b;
+  --bad-soft: #fee2e2;
+  --rec: #dc2626;
+  --flag: #92400e;
+  --flag-soft: #fef3c7;
+
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-serif: "Merriweather", "Georgia", "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas,
+    monospace;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 3px rgba(0, 0, 30, 0.08), 0 1px 2px rgba(0, 0, 30, 0.04);
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1117;
+    --surface: #181b22;
+    --surface-muted: #1e2230;
+    --border: #272d3a;
+    --border-strong: #3a4155;
+
+    --text: #e8eaf0;
+    --text-muted: #9aa0b0;
+    --text-faint: #6b7280;
+
+    --ink: #60a5fa;
+    --ink-hover: #93c5fd;
+    --on-ink: #0d1117;
+    --ink-soft: #1e3a5f;
+    --ink-line: #2563a8;
+
+    --ok: #4ade80;
+    --ok-soft: #052e16;
+    --bad: #f87171;
+    --bad-soft: #450a0a;
+    --rec: #ef4444;
+    --flag: #fbbf24;
+    --flag-soft: #451a03;
+
+    --shadow: none;
+  }
+}
+
+/* =========================
+   Base
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
